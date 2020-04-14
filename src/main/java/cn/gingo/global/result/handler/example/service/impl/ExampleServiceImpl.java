@@ -12,12 +12,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class ExampleServiceImpl implements ExampleService {
 
-  @Override
   public void testUnCheckedException() {
     throw new ExampleExceptions.UnCheckedException();
   }
 
-  @Override
   public void testCheckedException() throws Exception {
     throw new ExampleExceptions.CheckedException();
   }
