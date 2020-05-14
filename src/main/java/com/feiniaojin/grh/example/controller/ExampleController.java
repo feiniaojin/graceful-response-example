@@ -1,9 +1,9 @@
 package com.feiniaojin.grh.example.controller;
 
 import com.feiniaojin.grh.example.dto.RequestDto;
+import com.feiniaojin.grh.example.dto.ResponseDto;
 import com.feiniaojin.grh.example.service.ExampleService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import javax.annotation.Resource;
 import javax.validation.constraints.NotNull;
@@ -50,6 +50,13 @@ public class ExampleController {
   public RequestDto testSuccess(@Validated RequestDto dto) {
     log.info(dto.toString());
     return dto;
+  }
+
+  @RequestMapping("/get")
+  @ResponseBody
+  public ResponseDto get(Long id) {
+    log.info("id=" + id);
+    return exampleService.getById(id);
   }
 
   /**

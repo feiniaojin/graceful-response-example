@@ -1,5 +1,8 @@
 package com.feiniaojin.grh.example.service;
 
+import com.feiniaojin.grh.example.dto.RequestDto;
+import com.feiniaojin.grh.example.dto.ResponseDto;
+
 /**
  * 测试Service接口.
  *
@@ -17,4 +20,11 @@ public interface ExampleService {
    * @throws Exception 抛出受检异常
    */
   void testCheckedException() throws Exception;
+
+  /**
+   * 根据id获取数据
+   * @param id
+   * @return
+   */
+  ResponseDto getById(Long id);
 }
