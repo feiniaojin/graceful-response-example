@@ -1,7 +1,7 @@
-package cn.gingo.global.result.handler.example.service.impl;
+package com.feiniaojin.grh.example.service.impl;
 
-import cn.gingo.global.result.handler.example.exceptions.ExampleExceptions;
-import cn.gingo.global.result.handler.example.service.ExampleService;
+import com.feiniaojin.grh.example.exceptions.ExampleExceptions;
+import com.feiniaojin.grh.example.service.ExampleService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,10 +12,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class ExampleServiceImpl implements ExampleService {
 
+  @Override
   public void testUnCheckedException() {
     throw new ExampleExceptions.UnCheckedException();
   }
-
+  @Override
   public void testCheckedException() throws Exception {
     throw new ExampleExceptions.CheckedException();
   }

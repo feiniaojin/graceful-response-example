@@ -9,7 +9,7 @@ global:
 spring:
   mvc:
     throw-exception-if-no-handler-found: true
-  resources:
+    static-path-pattern: "*.html"
     add-mappings: false
 
 logging:

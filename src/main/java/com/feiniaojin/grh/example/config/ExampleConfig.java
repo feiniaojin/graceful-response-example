@@ -1,4 +1,4 @@
-package cn.gingo.global.result.handler.example.config;
+package com.feiniaojin.grh.example.config;
 
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -6,6 +6,9 @@ import javax.validation.ValidatorFactory;
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import springfox.documentation.swagger.web.UiConfiguration;
 
 /**
  * Config类.
@@ -16,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 23/1/2020 20:18:00
  */
 @Configuration
-public class ExampleConfig {
+public class ExampleConfig implements WebMvcConfigurer {
 
   /**
    * 配置Validator的fail_fast.
@@ -34,4 +37,5 @@ public class ExampleConfig {
 
     return validator;
   }
+
 }

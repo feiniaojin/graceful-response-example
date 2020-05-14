@@ -1,4 +1,4 @@
-package cn.gingo.global.result.handler.example.service;
+package com.feiniaojin.grh.example.service;
 
 /**
  * 测试Service接口.

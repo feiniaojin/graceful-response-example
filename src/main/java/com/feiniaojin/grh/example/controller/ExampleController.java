@@ -1,7 +1,10 @@
-package cn.gingo.global.result.handler.example.controller;
+package com.feiniaojin.grh.example.controller;
 
-import cn.gingo.global.result.handler.example.dto.RequestDto;
-import cn.gingo.global.result.handler.example.service.ExampleService;
+import com.feiniaojin.grh.example.dto.RequestDto;
+import com.feiniaojin.grh.example.service.ExampleService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import javax.annotation.Resource;
 import javax.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/example")
 @Slf4j
 @Validated
+@Api("ExampleController")
 public class ExampleController {
 
   @Resource
@@ -30,6 +34,7 @@ public class ExampleController {
    */
   @RequestMapping("/void")
   @ResponseBody
+  @ApiOperation(value = "测试返回空值", notes = "查询数据库中某个的学生信息")
   public void testVoidResponse() {
 
   }
@@ -55,7 +60,7 @@ public class ExampleController {
    */
   @RequestMapping("/runtime")
   @ResponseBody
-  public RequestDto testRuntimeException(@Validated RequestDto dto) {
+  public RequestDto testRuntimeException(RequestDto dto) {
     log.info(dto.toString());
     exampleService.testUnCheckedException();
     return dto;
@@ -70,7 +75,7 @@ public class ExampleController {
    */
   @RequestMapping("/checked")
   @ResponseBody
-  public RequestDto testCheckedException(@Validated RequestDto dto) throws Exception {
+  public RequestDto testCheckedException(RequestDto dto) throws Exception {
     log.info(dto.toString());
     exampleService.testCheckedException();
     return dto;
@@ -85,7 +90,7 @@ public class ExampleController {
    */
   @RequestMapping("/throwable")
   @ResponseBody
-  public RequestDto testThrowable(@Validated RequestDto dto) throws Throwable {
+  public RequestDto testThrowable(RequestDto dto) throws Throwable {
     log.info(dto.toString());
     throw new Throwable();
   }

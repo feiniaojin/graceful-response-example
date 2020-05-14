@@ -1,4 +1,4 @@
-package cn.gingo.global.result.handler.example.dto;
+package com.feiniaojin.grh.example.dto;
 
 import javax.validation.constraints.NotNull;
 import lombok.Data;

@@ -1,6 +1,7 @@
-package cn.gingo.global.result.handler.example.exceptions;
+package com.feiniaojin.grh.example.exceptions;
 
-import cn.gingo.global.result.handler.annotation.ExceptionMapper;
+
+import com.feiniaojin.grh.annotation.ExceptionMapper;
 
 /**
  * 测试用例的异常，包括运行时异常和受检异常.
