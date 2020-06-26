@@ -1,6 +1,6 @@
 package com.feiniaojin.grh.example;
 
-import com.feiniaojin.grh.EnableGlobalResultHandler;
+import com.feiniaojin.grh.starter.EnableGlobalResultHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;

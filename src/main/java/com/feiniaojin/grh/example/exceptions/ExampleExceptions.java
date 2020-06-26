@@ -1,7 +1,7 @@
 package com.feiniaojin.grh.example.exceptions;
 
 
-import com.feiniaojin.grh.annotation.ExceptionMapper;
+import com.feiniaojin.grh.def.ExceptionMapper;
 
 /**
  * 测试用例的异常，包括运行时异常和受检异常.
