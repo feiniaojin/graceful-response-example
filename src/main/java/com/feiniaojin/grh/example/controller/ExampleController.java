@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
@@ -115,12 +116,34 @@ public class ExampleController {
   }
 
   /**
+   * 不支持的http方法调用.
+   * POST接口，使用GET进行请求
+   *
+   * @param userId 非空
+   */
+  @RequestMapping(value = "/methodPost", method = RequestMethod.POST)
+  @ResponseBody
+  public void testMethodNotSupport(Long userId) {
+    log.info("" + userId);
+
+  }
+
+  /**
+   * 测试Controller中方法对参数进行校验的情形.
+   */
+  @RequestMapping("/jsonStr")
+  @ResponseBody
+  public String jsonStr() {
+    log.info("");
+    return "jsonStr";
+  }
+
+  /**
    * 测试Controller中方法对参数进行校验的情形.
    */
   @RequestMapping("/str")
-  @ResponseBody
-  public String testString() {
+  public String str() {
     log.info("");
-    return "testString";
+    return "view";
   }
 }

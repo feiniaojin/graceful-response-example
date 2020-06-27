@@ -22,8 +22,9 @@ public interface ExampleService {
   void testCheckedException() throws Exception;
 
   /**
-   * 根据id获取数据
-   * @param id
+   * 根据id获取数据.
+   *
+   * @param id  主键id.
    * @return
    */
   ResponseDto getById(Long id);

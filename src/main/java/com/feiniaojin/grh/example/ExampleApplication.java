@@ -29,6 +29,10 @@ public class ExampleApplication {
     SpringApplication.run(ExampleApplication.class, args);
   }
 
+  /**
+   * 配置Docket.
+   * @return
+   */
   @Bean
   public Docket api() {
     return new Docket(DocumentationType.SWAGGER_2)
@@ -40,6 +44,10 @@ public class ExampleApplication {
         .build();
   }
 
+  /**
+   * 配置apiInfo.
+   * @return
+   */
   @Bean
   public ApiInfo apiInfo() {
     return new ApiInfoBuilder()
