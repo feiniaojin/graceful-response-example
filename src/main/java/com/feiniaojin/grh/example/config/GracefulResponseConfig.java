@@ -1,8 +1,8 @@
 package com.feiniaojin.grh.example.config;
 
 import com.feiniaojin.grh.example.exceptions.NotFoundException;
-import com.feiniaojin.naaf.gracefulresponse.AbstractCustomConfig;
-import com.feiniaojin.naaf.gracefulresponse.ExceptionAliasRegister;
+import com.feiniaojin.gracefulresponse.AbstractCustomConfig;
+import com.feiniaojin.gracefulresponse.ExceptionAliasRegister;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration

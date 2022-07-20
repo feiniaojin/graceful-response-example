@@ -1,9 +1,8 @@
 package com.feiniaojin.grh.example;
 
-import com.feiniaojin.naaf.gracefulresponse.EnableGracefulResponse;
+import com.feiniaojin.gracefulresponse.EnableGracefulResponse;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * class {@code ExampleApplication}  案例的入口类.
@@ -13,11 +12,8 @@ import org.springframework.context.annotation.Configuration;
  */
 @EnableGracefulResponse
 @SpringBootApplication
-@Configuration
 public class ExampleApplication {
     public static void main(String[] args) {
         SpringApplication.run(ExampleApplication.class, args);
     }
-
-
 }

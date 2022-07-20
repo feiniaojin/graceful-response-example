@@ -1,7 +1,7 @@
 package com.feiniaojin.grh.example.exceptions;
 
 
-import com.feiniaojin.naaf.gracefulresponse.api.ExceptionMapper;
+import com.feiniaojin.gracefulresponse.api.ExceptionMapper;
 
 /**
  * 测试用例的异常，包括运行时异常和受检异常.
@@ -20,4 +20,5 @@ public class ExampleExceptions {
   public static class CheckedException extends Exception {
 
   }
+
 }
