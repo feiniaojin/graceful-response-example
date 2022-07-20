@@ -1,7 +1,6 @@
-package com.feiniaojin.grh.example.service;
+package com.feiniaojin.gracefuresponse.example.service;
 
-import com.feiniaojin.grh.example.dto.RequestDto;
-import com.feiniaojin.grh.example.dto.ResponseDto;
+import com.feiniaojin.gracefuresponse.example.dto.ResponseDto;
 
 /**
  * 测试Service接口.

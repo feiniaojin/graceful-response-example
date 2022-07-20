@@ -1,4 +1,4 @@
-package com.feiniaojin.grh.example.config;
+package com.feiniaojin.gracefuresponse.example.config;
 
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.context.annotation.Bean;

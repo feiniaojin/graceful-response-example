@@ -1,7 +1,7 @@
-package com.feiniaojin.grh.example.service.impl;
+package com.feiniaojin.gracefuresponse.example.service.impl;
 
-import com.feiniaojin.grh.example.exceptions.MapperDemoException;
-import com.feiniaojin.grh.example.service.DemoService;
+import com.feiniaojin.gracefuresponse.example.exceptions.MapperDemoException;
+import com.feiniaojin.gracefuresponse.example.service.DemoService;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;

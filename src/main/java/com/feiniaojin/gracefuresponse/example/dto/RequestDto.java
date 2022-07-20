@@ -1,4 +1,4 @@
-package com.feiniaojin.grh.example.dto;
+package com.feiniaojin.gracefuresponse.example.dto;
 
 import javax.validation.constraints.NotNull;
 import lombok.Data;

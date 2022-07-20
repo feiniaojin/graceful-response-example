@@ -1,9 +1,8 @@
-package com.feiniaojin.grh.example.service.impl;
+package com.feiniaojin.gracefuresponse.example.service.impl;
 
-import com.feiniaojin.grh.example.dto.RequestDto;
-import com.feiniaojin.grh.example.dto.ResponseDto;
-import com.feiniaojin.grh.example.exceptions.ExampleExceptions;
-import com.feiniaojin.grh.example.service.ExampleService;
+import com.feiniaojin.gracefuresponse.example.dto.ResponseDto;
+import com.feiniaojin.gracefuresponse.example.exceptions.ExampleExceptions;
+import com.feiniaojin.gracefuresponse.example.service.ExampleService;
 import org.springframework.stereotype.Service;
 
 /**

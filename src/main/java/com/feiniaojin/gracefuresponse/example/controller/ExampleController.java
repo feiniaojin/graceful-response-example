@@ -1,8 +1,8 @@
-package com.feiniaojin.grh.example.controller;
+package com.feiniaojin.gracefuresponse.example.controller;
 
-import com.feiniaojin.grh.example.dto.RequestDto;
-import com.feiniaojin.grh.example.dto.ResponseDto;
-import com.feiniaojin.grh.example.service.ExampleService;
+import com.feiniaojin.gracefuresponse.example.dto.RequestDto;
+import com.feiniaojin.gracefuresponse.example.dto.ResponseDto;
+import com.feiniaojin.gracefuresponse.example.service.ExampleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;

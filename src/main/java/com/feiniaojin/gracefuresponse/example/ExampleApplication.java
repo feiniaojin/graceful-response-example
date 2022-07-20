@@ -1,4 +1,4 @@
-package com.feiniaojin.grh.example;
+package com.feiniaojin.gracefuresponse.example;
 
 import com.feiniaojin.gracefulresponse.EnableGracefulResponse;
 import org.springframework.boot.SpringApplication;

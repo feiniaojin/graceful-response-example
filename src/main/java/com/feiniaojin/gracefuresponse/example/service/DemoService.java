@@ -1,4 +1,4 @@
-package com.feiniaojin.grh.example.service;
+package com.feiniaojin.gracefuresponse.example.service;
 
 import java.util.Map;
 

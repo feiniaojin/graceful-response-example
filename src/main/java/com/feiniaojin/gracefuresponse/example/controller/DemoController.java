@@ -1,6 +1,6 @@
-package com.feiniaojin.grh.example.controller;
+package com.feiniaojin.gracefuresponse.example.controller;
 
-import com.feiniaojin.grh.example.service.DemoService;
+import com.feiniaojin.gracefuresponse.example.service.DemoService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

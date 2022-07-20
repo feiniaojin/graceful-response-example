@@ -1,4 +1,4 @@
-package com.feiniaojin.grh.example.exceptions;
+package com.feiniaojin.gracefuresponse.example.exceptions;
 
 import com.feiniaojin.gracefulresponse.api.ExceptionMapper;
 
