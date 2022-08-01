@@ -1,7 +1,7 @@
 package com.feiniaojin.gracefuresponse.example.controller;
 
-import com.feiniaojin.gracefuresponse.example.dto.RequestDto;
-import com.feiniaojin.gracefuresponse.example.dto.ResponseDto;
+import com.feiniaojin.gracefuresponse.example.dto.UserInfoQuery;
+import com.feiniaojin.gracefuresponse.example.dto.UserInfoView;
 import com.feiniaojin.gracefuresponse.example.service.ExampleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -39,31 +39,33 @@ public class ExampleController {
 
     /**
      * http://localhost:9090/example/validate
+     *
      * @param dto
      */
     @RequestMapping("/validate")
     @ResponseBody
-    public void testValidateException(@Validated RequestDto dto) {
+    public void testValidateException(@Validated UserInfoQuery dto) {
         log.info(dto.toString());
     }
 
     /**
-     * http://localhost:9090/example/success?userId=1&userName=userName&age=20
+     * http://localhost:9090/example/success?userId=1&userName=userName
+     *
      * @param dto
      * @return
      */
     @RequestMapping("/success")
     @ResponseBody
-    public RequestDto testSuccess(@Validated RequestDto dto) {
+    public UserInfoView testSuccess(@Validated UserInfoQuery dto) {
         log.info(dto.toString());
-        return dto;
+        return UserInfoView.builder().id(1L).name("name").build();
     }
 
     @RequestMapping("/get")
     @ResponseBody
-    public ResponseDto get(Long id) {
+    public UserInfoView get(Long id) {
         log.info("id=" + id);
-        return exampleService.getById(id);
+        return UserInfoView.builder().id(id).name("name" + id).build();
     }
 
     /**
@@ -74,10 +76,10 @@ public class ExampleController {
      */
     @RequestMapping("/runtime")
     @ResponseBody
-    public RequestDto testRuntimeException(RequestDto dto) {
+    public UserInfoView testRuntimeException(UserInfoQuery dto) {
         log.info(dto.toString());
         exampleService.testUnCheckedException();
-        return dto;
+        return UserInfoView.builder().id(0L).name("0000").build();
     }
 
     /**
@@ -89,10 +91,10 @@ public class ExampleController {
      */
     @RequestMapping("/checked")
     @ResponseBody
-    public RequestDto testCheckedException(RequestDto dto) throws Exception {
+    public UserInfoView testCheckedException(UserInfoQuery dto) throws Exception {
         log.info(dto.toString());
         exampleService.testCheckedException();
-        return dto;
+        return UserInfoView.builder().id(0L).name("0000").build();
     }
 
     /**
@@ -104,7 +106,7 @@ public class ExampleController {
      */
     @RequestMapping("/throwable")
     @ResponseBody
-    public RequestDto testThrowable(RequestDto dto) throws Throwable {
+    public UserInfoView testThrowable(UserInfoQuery dto) throws Throwable {
         log.info(dto.toString());
         throw new Throwable();
     }

@@ -1,45 +1,46 @@
 package com.feiniaojin.gracefuresponse.example.config;
 
-import com.feiniaojin.gracefulresponse.api.DefaultResponseStatusFactory;
-import com.feiniaojin.gracefulresponse.api.ResponseFactory;
-import com.feiniaojin.gracefulresponse.data.Response;
-import com.feiniaojin.gracefulresponse.data.ResponseStatus;
+
+import com.feiniaojin.ddd.ecosystem.gracefulresponse.api.ResponseFactory;
+import com.feiniaojin.ddd.ecosystem.gracefulresponse.api.ResponseStatusFactory;
+import com.feiniaojin.ddd.ecosystem.gracefulresponse.data.Response;
+import com.feiniaojin.ddd.ecosystem.gracefulresponse.data.ResponseStatus;
 
 import javax.annotation.Resource;
 
-public class CustomResponseFactoryImpl implements ResponseFactory<String> {
+public class CustomResponseFactoryImpl implements ResponseFactory {
 
     @Resource
-    private DefaultResponseStatusFactory<String> defaultResponseStatusFactory;
+    private ResponseStatusFactory defaultResponseStatusFactory;
 
     @Override
-    public Response<String> newEmptyInstance() {
+    public Response newEmptyInstance() {
         return new CustomResponseImpl();
     }
 
     @Override
-    public Response<String> newInstance(ResponseStatus<String> statusLine) {
+    public Response newInstance(ResponseStatus statusLine) {
         CustomResponseImpl customResponse = new CustomResponseImpl();
         customResponse.setStatus(statusLine);
         return customResponse;
     }
 
     @Override
-    public Response<String> newSuccessInstance() {
+    public Response newSuccessInstance() {
         CustomResponseImpl customResponse = new CustomResponseImpl();
         customResponse.setStatus(defaultResponseStatusFactory.defaultSuccess());
         return customResponse;
     }
 
     @Override
-    public Response<String> newSuccessInstance(Object data) {
-        Response<String> response = this.newSuccessInstance();
+    public Response newSuccessInstance(Object data) {
+        Response response = this.newSuccessInstance();
         response.setPayload(data);
         return response;
     }
 
     @Override
-    public Response<String> newFailInstance() {
+    public Response newFailInstance() {
         CustomResponseImpl customResponse = new CustomResponseImpl();
         customResponse.setStatus(defaultResponseStatusFactory.defaultFail());
         return customResponse;

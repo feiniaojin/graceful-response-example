@@ -1,7 +1,7 @@
 package com.feiniaojin.gracefuresponse.example.exceptions;
 
 
-import com.feiniaojin.gracefulresponse.api.ExceptionMapper;
+import com.feiniaojin.ddd.ecosystem.gracefulresponse.api.ExceptionMapper;
 
 /**
  * 测试用例的异常，包括运行时异常和受检异常.

@@ -1,10 +1,10 @@
 package com.feiniaojin.gracefuresponse.example.config;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.feiniaojin.gracefulresponse.data.Response;
-import com.feiniaojin.gracefulresponse.data.ResponseStatus;
+import com.feiniaojin.ddd.ecosystem.gracefulresponse.data.Response;
+import com.feiniaojin.ddd.ecosystem.gracefulresponse.data.ResponseStatus;
 
-public class CustomResponseImpl implements Response<String> {
+public class CustomResponseImpl implements Response {
 
     private String code;
 
@@ -13,14 +13,14 @@ public class CustomResponseImpl implements Response<String> {
     private Object data;
 
     @Override
-    public void setStatus(ResponseStatus<String> statusLine) {
+    public void setStatus(ResponseStatus statusLine) {
         this.code = statusLine.getCode();
         this.msg = statusLine.getMsg();
     }
 
     @Override
     @JsonIgnore
-    public ResponseStatus<String> getStatus() {
+    public ResponseStatus getStatus() {
         return null;
     }
 
