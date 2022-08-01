@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Configuration;
 public class GracefulResponseConfig extends AbstractExceptionAliasRegisterConfig {
 
     @Override
-    protected void registerAlias(ExceptionAliasRegister register) {
-        register.doRegisterExceptionAlias(NotFoundException.class);
+    protected void registerAlias(ExceptionAliasRegister aliasRegister) {
+        aliasRegister.doRegisterExceptionAlias(NotFoundException.class);
     }
 
     @Bean
