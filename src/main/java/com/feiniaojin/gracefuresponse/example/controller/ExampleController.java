@@ -34,7 +34,7 @@ public class ExampleController {
     @RequestMapping("/void")
     @ResponseBody
     public void testVoidResponse() {
-
+        log.info("testVoidResponse");
     }
 
     /**
@@ -49,7 +49,7 @@ public class ExampleController {
     }
 
     /**
-     * http://localhost:9090/example/success?userId=1&userName=userName
+     * http://localhost:9090/example/success?userId=1&userName=userName&age=20
      *
      * @param dto
      * @return

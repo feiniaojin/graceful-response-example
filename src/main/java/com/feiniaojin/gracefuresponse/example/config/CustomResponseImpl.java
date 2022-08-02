@@ -4,13 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.feiniaojin.ddd.ecosystem.gracefulresponse.data.Response;
 import com.feiniaojin.ddd.ecosystem.gracefulresponse.data.ResponseStatus;
 
+import java.util.Collections;
+
 public class CustomResponseImpl implements Response {
 
     private String code;
 
     private String msg;
 
-    private Object data;
+    private Object data = Collections.EMPTY_MAP;
 
     @Override
     public void setStatus(ResponseStatus statusLine) {
