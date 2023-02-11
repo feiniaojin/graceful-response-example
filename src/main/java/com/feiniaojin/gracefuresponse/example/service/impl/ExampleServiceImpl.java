@@ -1,5 +1,6 @@
 package com.feiniaojin.gracefuresponse.example.service.impl;
 
+import com.feiniaojin.gracefuresponse.example.exceptions.ExampleExceptions;
 import com.feiniaojin.gracefuresponse.example.service.ExampleService;
 import org.springframework.stereotype.Service;
 
@@ -7,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class ExampleServiceImpl implements ExampleService {
     @Override
     public void testUnCheckedException() {
-        throw new RuntimeException();
+        throw new ExampleExceptions.UnCheckedException();
     }
 
     @Override

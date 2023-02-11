@@ -1,14 +1,16 @@
 package com.feiniaojin.gracefuresponse.example.config;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.feiniaojin.ddd.ecosystem.gracefulresponse.data.Response;
-import com.feiniaojin.ddd.ecosystem.gracefulresponse.data.ResponseStatus;
+import com.feiniaojin.gracefulresponse.data.Response;
+import com.feiniaojin.gracefulresponse.data.ResponseStatus;
 
 import java.util.Collections;
 
 public class CustomResponseImpl implements Response {
 
     private String code;
+
+    private Long timestamp = System.currentTimeMillis();
 
     private String msg;
 
@@ -59,5 +61,9 @@ public class CustomResponseImpl implements Response {
 
     public void setData(Object data) {
         this.data = data;
+    }
+
+    public Long getTimestamp() {
+        return timestamp;
     }
 }

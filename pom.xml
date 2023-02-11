@@ -14,14 +14,13 @@
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <springfox-swagger.version>2.6.0</springfox-swagger.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>com.feiniaojin.ddd.ecosystem</groupId>
+            <groupId>com.feiniaojin</groupId>
             <artifactId>graceful-response</artifactId>
-            <version>1.0</version>
+            <version>1.1</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

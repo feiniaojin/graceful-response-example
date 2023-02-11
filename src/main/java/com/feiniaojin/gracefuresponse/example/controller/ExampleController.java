@@ -1,11 +1,14 @@
 package com.feiniaojin.gracefuresponse.example.controller;
 
+import com.feiniaojin.gracefulresponse.api.ResponseFactory;
+import com.feiniaojin.gracefulresponse.data.Response;
 import com.feiniaojin.gracefuresponse.example.dto.UserInfoQuery;
 import com.feiniaojin.gracefuresponse.example.dto.UserInfoView;
 import com.feiniaojin.gracefuresponse.example.service.ExampleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,6 +27,9 @@ import javax.validation.constraints.NotNull;
 @Slf4j
 @Validated
 public class ExampleController {
+
+    @Resource
+    private ResponseFactory responseFactory;
 
     @Resource
     private ExampleService exampleService;
@@ -137,13 +143,14 @@ public class ExampleController {
     }
 
     /**
+     * {"key":"value"}
      * 测试Controller中方法对参数进行校验的情形.
      */
     @RequestMapping("/jsonStr")
     @ResponseBody
-    public String jsonStr() {
+    public Response jsonStr() {
         log.info("");
-        return "jsonStr";
+        return responseFactory.newSuccessInstance("abc");
     }
 
     /**
@@ -154,4 +161,5 @@ public class ExampleController {
         log.info("");
         return "view";
     }
+    
 }
