@@ -1,9 +1,12 @@
 package com.feiniaojin.gracefuresponse.example.controller;
 
+import com.feiniaojin.gracefulresponse.GracefulResponse;
+import com.feiniaojin.gracefulresponse.GracefulResponseProperties;
 import com.feiniaojin.gracefulresponse.api.ResponseFactory;
 import com.feiniaojin.gracefulresponse.data.Response;
 import com.feiniaojin.gracefuresponse.example.dto.UserInfoQuery;
 import com.feiniaojin.gracefuresponse.example.dto.UserInfoView;
+import com.feiniaojin.gracefuresponse.example.exceptions.NotFoundException;
 import com.feiniaojin.gracefuresponse.example.service.ExampleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -62,7 +65,7 @@ public class ExampleController {
      */
     @RequestMapping("/success")
     @ResponseBody
-    public UserInfoView testSuccess(@Validated UserInfoQuery dto) {
+    public UserInfoView testSuccess(UserInfoQuery dto) {
         log.info(dto.toString());
         return UserInfoView.builder().id(1L).name("name").build();
     }
@@ -154,12 +157,32 @@ public class ExampleController {
     }
 
     /**
-     * 测试Controller中方法对参数进行校验的情形.
+     * 直接返回String.
      */
     @RequestMapping("/str")
     public String str() {
         log.info("");
         return "view";
     }
-    
+
+
+    /**
+     * 测试Controller中方法对参数进行校验的情形.
+     */
+    @RequestMapping("/raiseException0")
+    public void raiseException0() {
+        GracefulResponse.raiseException("520", "测试手工异常0");
+    }
+
+    /**
+     * 测试Controller中方法对参数进行校验的情形.
+     */
+    @RequestMapping("/raiseException1")
+    public void raiseException1() {
+        try {
+            throw new Exception("发生异常啦");
+        } catch (Exception e) {
+            GracefulResponse.raiseException("1314", "测试手工异常1", e);
+        }
+    }
 }

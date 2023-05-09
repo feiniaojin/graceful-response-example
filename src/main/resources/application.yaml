@@ -2,7 +2,7 @@ server:
   port: 9090
 
 gr:
-  printExceptionInGlobalAdvice: false
+  printExceptionInGlobalAdvice: true
 #  responseClassFullName: com.feiniaojin.gracefuresponse.example.config.CustomResponseImpl
   responseStyle: 0
   defaultSuccessCode: 200
