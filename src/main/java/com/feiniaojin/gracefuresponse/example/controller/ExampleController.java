@@ -1,17 +1,15 @@
 package com.feiniaojin.gracefuresponse.example.controller;
 
 import com.feiniaojin.gracefulresponse.GracefulResponse;
-import com.feiniaojin.gracefulresponse.GracefulResponseProperties;
 import com.feiniaojin.gracefulresponse.api.ResponseFactory;
+import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
 import com.feiniaojin.gracefulresponse.data.Response;
 import com.feiniaojin.gracefuresponse.example.dto.UserInfoQuery;
 import com.feiniaojin.gracefuresponse.example.dto.UserInfoView;
-import com.feiniaojin.gracefuresponse.example.exceptions.NotFoundException;
 import com.feiniaojin.gracefuresponse.example.service.ExampleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,6 +37,7 @@ public class ExampleController {
 
     /**
      * 测试空返回值.
+     * http://localhost:9090/example/void
      */
     @RequestMapping("/void")
     @ResponseBody
@@ -46,18 +45,10 @@ public class ExampleController {
         log.info("testVoidResponse");
     }
 
-    /**
-     * http://localhost:9090/example/validate
-     *
-     * @param dto
-     */
-    @RequestMapping("/validate")
-    @ResponseBody
-    public void testValidateException(@Validated UserInfoQuery dto) {
-        log.info(dto.toString());
-    }
 
     /**
+     * 
+     * 测试成功返回
      * http://localhost:9090/example/success?userId=1&userName=userName&age=20
      *
      * @param dto
@@ -70,6 +61,12 @@ public class ExampleController {
         return UserInfoView.builder().id(1L).name("name").build();
     }
 
+    /**
+     * 测试成功返回
+     * http://localhost:9090/example/get?id=1
+     * @param id
+     * @return
+     */
     @RequestMapping("/get")
     @ResponseBody
     public UserInfoView get(Long id) {
@@ -79,21 +76,19 @@ public class ExampleController {
 
     /**
      * 测试抛出运行时异常的处理.
-     *
-     * @param dto 入参
+     * http://localhost:9090/example/runtime
      * @return 直接返回，未处理
      */
     @RequestMapping("/runtime")
     @ResponseBody
-    public UserInfoView testRuntimeException(UserInfoQuery dto) {
-        log.info(dto.toString());
+    public UserInfoView testRuntimeException() {
         exampleService.testUnCheckedException();
         return UserInfoView.builder().id(0L).name("0000").build();
     }
 
     /**
      * 测试受检异常的情形.
-     *
+     * http://localhost:9090/example/checked
      * @param dto 入参
      * @return 未处理，直接将入参返回
      * @throws Exception 首检异常
@@ -108,7 +103,7 @@ public class ExampleController {
 
     /**
      * 测试抛出{@code Throwable} 的情形.
-     *
+     * http://localhost:9090/example/throwable
      * @param dto 入参
      * @return 未处理，直接返回
      * @throws Throwable 抛出Throwable异常
@@ -121,13 +116,26 @@ public class ExampleController {
     }
 
     /**
-     * 测试Controller中方法对参数进行校验的情形.
+     * http://localhost:9090/example/validateDto
      *
+     * @param dto
+     */
+    @RequestMapping("/validateDto")
+    @ResponseBody
+    public void validateDto(@Validated UserInfoQuery dto) {
+        log.info(dto.toString());
+    }
+
+    /**
+     * 测试Controller中方法对参数进行校验的情形.
+     * http://localhost:9090/example/validateMethodParam
      * @param userId 非空
      */
-    @RequestMapping("/method")
+    @RequestMapping("/validateMethodParam")
     @ResponseBody
-    public void testMethod(@NotNull Long userId) {
+    @ValidationStatusCode(code = "1314")
+    public void validateMethodParam(@NotNull(message = "userId不能为空") Long userId,
+                                    @NotNull(message = "userName不能为空") Long userName) {
         log.info("" + userId);
 
     }
@@ -135,7 +143,7 @@ public class ExampleController {
     /**
      * 不支持的http方法调用.
      * POST接口，使用GET进行请求
-     *
+     * http://localhost:9090/example/methodPost
      * @param userId 非空
      */
     @RequestMapping(value = "/methodPost", method = RequestMethod.POST)
@@ -146,6 +154,8 @@ public class ExampleController {
     }
 
     /**
+     * http://localhost:9090/example/jsonStr
+     * 
      * {"key":"value"}
      * 测试Controller中方法对参数进行校验的情形.
      */
@@ -157,7 +167,8 @@ public class ExampleController {
     }
 
     /**
-     * 直接返回String.
+     * http://localhost:9090/example/str
+     * 直接返回String，将会匹配模版页面.
      */
     @RequestMapping("/str")
     public String str() {
@@ -168,6 +179,7 @@ public class ExampleController {
 
     /**
      * 测试Controller中方法对参数进行校验的情形.
+     * http://localhost:9090/example/raiseException0
      */
     @RequestMapping("/raiseException0")
     public void raiseException0() {
@@ -176,6 +188,7 @@ public class ExampleController {
 
     /**
      * 测试Controller中方法对参数进行校验的情形.
+     * http://localhost:9090/example/raiseException0
      */
     @RequestMapping("/raiseException1")
     public void raiseException1() {
