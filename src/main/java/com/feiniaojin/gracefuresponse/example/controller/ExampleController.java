@@ -198,4 +198,14 @@ public class ExampleController {
             GracefulResponse.raiseException("1314", "测试手工异常1", e);
         }
     }
+
+    /**
+     * http://localhost:9090/example/return/str
+     * 直接返回String
+     */
+    @RequestMapping("/return/str")
+    @ResponseBody
+    public String returnStr() {
+        return "测试成功";
+    }
 }

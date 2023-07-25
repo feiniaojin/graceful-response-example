@@ -2,14 +2,14 @@ server:
   port: 9090
 
 gr:
-  printExceptionInGlobalAdvice: true
-#  responseClassFullName: com.feiniaojin.gracefuresponse.example.config.CustomResponseImpl
-  responseStyle: 0
-  defaultSuccessCode: 200
-  defaultSuccessMsg: success
-  defaultFailCode: 500
-  defaultFailMsg: fail
-
+  print-exception-in-global-advice: true
+  default-error-msg: fail
+  default-error-code: 500
+  default-success-code: 200
+  default-success-msg: success
+  response-style: 0
+  scan-packages: com.feiniaojin.gracefuresponse.example.controller
+  # response-class-full-name: com.feiniaojin.gracefuresponse.example.config.CustomResponseImpl
 spring:
   mvc:
     throw-exception-if-no-handler-found: true
