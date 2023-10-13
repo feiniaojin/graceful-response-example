@@ -4,12 +4,14 @@ import com.feiniaojin.gracefulresponse.GracefulResponse;
 import com.feiniaojin.gracefulresponse.api.ResponseFactory;
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
 import com.feiniaojin.gracefulresponse.data.Response;
+import com.feiniaojin.gracefuresponse.example.dto.UserInfoCommand;
 import com.feiniaojin.gracefuresponse.example.dto.UserInfoQuery;
 import com.feiniaojin.gracefuresponse.example.dto.UserInfoView;
 import com.feiniaojin.gracefuresponse.example.service.ExampleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -47,7 +49,6 @@ public class ExampleController {
 
 
     /**
-     * 
      * 测试成功返回
      * http://localhost:9090/example/success?userId=1&userName=userName&age=20
      *
@@ -64,6 +65,7 @@ public class ExampleController {
     /**
      * 测试成功返回
      * http://localhost:9090/example/get?id=1
+     *
      * @param id
      * @return
      */
@@ -77,6 +79,7 @@ public class ExampleController {
     /**
      * 测试抛出运行时异常的处理.
      * http://localhost:9090/example/runtime
+     *
      * @return 直接返回，未处理
      */
     @RequestMapping("/runtime")
@@ -89,6 +92,7 @@ public class ExampleController {
     /**
      * 测试受检异常的情形.
      * http://localhost:9090/example/checked
+     *
      * @param dto 入参
      * @return 未处理，直接将入参返回
      * @throws Exception 首检异常
@@ -104,6 +108,7 @@ public class ExampleController {
     /**
      * 测试抛出{@code Throwable} 的情形.
      * http://localhost:9090/example/throwable
+     *
      * @param dto 入参
      * @return 未处理，直接返回
      * @throws Throwable 抛出Throwable异常
@@ -129,6 +134,7 @@ public class ExampleController {
     /**
      * 测试Controller中方法对参数进行校验的情形.
      * http://localhost:9090/example/validateMethodParam
+     *
      * @param userId 非空
      */
     @RequestMapping("/validateMethodParam")
@@ -144,6 +150,7 @@ public class ExampleController {
      * 不支持的http方法调用.
      * POST接口，使用GET进行请求
      * http://localhost:9090/example/methodPost
+     *
      * @param userId 非空
      */
     @RequestMapping(value = "/methodPost", method = RequestMethod.POST)
@@ -155,7 +162,7 @@ public class ExampleController {
 
     /**
      * http://localhost:9090/example/jsonStr
-     * 
+     * <p>
      * {"key":"value"}
      * 测试Controller中方法对参数进行校验的情形.
      */
@@ -208,4 +215,15 @@ public class ExampleController {
     public String returnStr() {
         return "测试成功";
     }
+
+    /**
+     * http://localhost:9090/example/validate/propertyType
+     * @param command
+     */
+    @RequestMapping("/validate/propertyType")
+    @ResponseBody
+    public void validatePropertyType(@RequestBody @Validated UserInfoCommand command) {
+
+    }
+
 }

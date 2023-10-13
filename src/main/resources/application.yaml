@@ -1,14 +1,14 @@
 server:
   port: 9090
 
-gr:
+graceful-response:
   print-exception-in-global-advice: true
   default-error-msg: fail
   default-error-code: 500
   default-success-code: 200
   default-success-msg: success
   response-style: 0
-  scan-packages: com.feiniaojin.gracefuresponse.example.controller
+  exclude-packages: com.feiniaojin.*.controller.exclude
   # response-class-full-name: com.feiniaojin.gracefuresponse.example.config.CustomResponseImpl
 spring:
   mvc:
@@ -21,4 +21,4 @@ spring:
 
 logging:
   level:
-    cm.gingo: DEBUG
+    com.feiniaojin: DEBUG
