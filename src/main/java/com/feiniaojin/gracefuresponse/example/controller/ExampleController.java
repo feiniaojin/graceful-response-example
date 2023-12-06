@@ -10,6 +10,7 @@ import com.feiniaojin.gracefuresponse.example.dto.UserInfoView;
 import com.feiniaojin.gracefuresponse.example.service.ExampleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.NotNull;
+import java.util.Collections;
+import java.util.Map;
 
 
 /**
@@ -95,7 +98,7 @@ public class ExampleController {
      *
      * @param dto 入参
      * @return 未处理，直接将入参返回
-     * @throws Exception 首检异常
+     * @throws Exception 受检异常
      */
     @RequestMapping("/checked")
     @ResponseBody
@@ -218,12 +221,43 @@ public class ExampleController {
 
     /**
      * http://localhost:9090/example/validate/propertyType
+     *
      * @param command
      */
     @RequestMapping("/validate/propertyType")
     @ResponseBody
     public void validatePropertyType(@RequestBody @Validated UserInfoCommand command) {
-
+        log.info("");
     }
 
+    @ResponseBody
+    @RequestMapping("/kv")
+    public Map<String, Object> single() {
+        return Collections.singletonMap("key", "token");
+    }
+
+    @RequestMapping("/assert0")
+    @ResponseBody
+    public void assert0(Integer id) {
+        Assert.isTrue(id == 1, "id不等于1");
+    }
+
+    @RequestMapping("/assert1")
+    @ResponseBody
+    public void assert1(Integer id) {
+        GracefulResponse.warpAssert(() -> Assert.isTrue(id == 1, "id不等于1"));
+    }
+
+    @RequestMapping("/assert2")
+    @ResponseBody
+    public void assert2(Integer id) {
+        GracefulResponse.warpAssert("1001", () -> Assert.isTrue(id == 1, "id不等于1"));
+    }
+
+
+
+    @RequestMapping("/testException")
+    public void testException() {
+        throw new RuntimeException("testException");
+    }
 }
