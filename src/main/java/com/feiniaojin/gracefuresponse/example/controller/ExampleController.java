@@ -7,6 +7,7 @@ import com.feiniaojin.gracefulresponse.data.Response;
 import com.feiniaojin.gracefuresponse.example.dto.UserInfoCommand;
 import com.feiniaojin.gracefuresponse.example.dto.UserInfoQuery;
 import com.feiniaojin.gracefuresponse.example.dto.UserInfoView;
+import com.feiniaojin.gracefuresponse.example.exceptions.ReplaceMsgException;
 import com.feiniaojin.gracefuresponse.example.service.ExampleService;
 import jakarta.annotation.Resource;
 import jakarta.validation.constraints.NotNull;
@@ -253,11 +254,13 @@ public class ExampleController {
     public void assert2(Integer id) {
         GracefulResponse.warpAssert("1001", () -> Assert.isTrue(id == 1, "id不等于1"));
     }
+    @RequestMapping("/customExceptionDetailMessage0")
+    public void customExceptionDetailMessage0() {
+        throw new ReplaceMsgException();
+    }
 
-
-
-    @RequestMapping("/testException")
-    public void testException() {
-        throw new RuntimeException("testException");
+    @RequestMapping("/customExceptionDetailMessage1")
+    public void customExceptionDetailMessage1() {
+        throw new ReplaceMsgException("我自己定义了异常信息");
     }
 }
