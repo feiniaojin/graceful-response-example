@@ -1,11 +1,11 @@
 package com.feiniaojin.gracefuresponse.example.dto;
 
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 @Data
 public class UserInfoCommand {

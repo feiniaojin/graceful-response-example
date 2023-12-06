@@ -8,6 +8,8 @@ import com.feiniaojin.gracefuresponse.example.dto.UserInfoCommand;
 import com.feiniaojin.gracefuresponse.example.dto.UserInfoQuery;
 import com.feiniaojin.gracefuresponse.example.dto.UserInfoView;
 import com.feiniaojin.gracefuresponse.example.service.ExampleService;
+import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -17,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
-import javax.validation.constraints.NotNull;
 import java.util.Collections;
 import java.util.Map;
 
