@@ -4,6 +4,7 @@ import com.feiniaojin.gracefulresponse.GracefulResponse;
 import com.feiniaojin.gracefulresponse.api.ResponseFactory;
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
 import com.feiniaojin.gracefulresponse.data.Response;
+import com.feiniaojin.gracefuresponse.example.dto.MethodDTO;
 import com.feiniaojin.gracefuresponse.example.dto.UserInfoCommand;
 import com.feiniaojin.gracefuresponse.example.dto.UserInfoQuery;
 import com.feiniaojin.gracefuresponse.example.dto.UserInfoView;
@@ -32,6 +33,7 @@ import java.util.Map;
 @RequestMapping("/example")
 @Slf4j
 @Validated
+//@ValidationStatusCode(code = "456")
 public class ExampleController {
 
     @Resource
@@ -130,6 +132,7 @@ public class ExampleController {
      */
     @RequestMapping("/validateDto")
     @ResponseBody
+//    @ValidationStatusCode(code = "123")
     public void validateDto(@Validated UserInfoQuery dto) {
         log.info(dto.toString());
     }
@@ -147,6 +150,18 @@ public class ExampleController {
                                     @NotNull(message = "userName不能为空") Long userName) {
         log.info("" + userId);
 
+    }
+
+    /**
+     * http://localhost:9090/example/validateMethodDto
+     *
+     * @param dto
+     */
+    @RequestMapping("/validateMethodDto")
+    @ResponseBody
+//    @ValidationStatusCode(code = "523")
+    public void validateMethodDto(@Validated @RequestBody MethodDTO dto) {
+        log.info("");
     }
 
     /**
@@ -245,15 +260,14 @@ public class ExampleController {
     @RequestMapping("/assert1")
     @ResponseBody
     public void assert1(Integer id) {
-        GracefulResponse.warpAssert(() -> Assert.isTrue(id == 1, "id不等于1"));
+        GracefulResponse.wrapAssert(() -> Assert.isTrue(id == 1, "id不等于1"));
     }
 
     @RequestMapping("/assert2")
     @ResponseBody
     public void assert2(Integer id) {
-        GracefulResponse.warpAssert("1001", () -> Assert.isTrue(id == 1, "id不等于1"));
+        GracefulResponse.wrapAssert("1001", () -> Assert.isTrue(id == 1, "id不等于1"));
     }
-
 
 
     @RequestMapping("/testException")

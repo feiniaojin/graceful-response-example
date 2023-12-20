@@ -11,6 +11,7 @@ graceful-response:
   exclude-packages: com.feiniaojin.*.controller.exclude
   # response-class-full-name: com.feiniaojin.gracefuresponse.example.config.CustomResponseImpl
   origin-exception-using-detail-message: true
+  default-validate-error-code: 999
 spring:
   mvc:
     throw-exception-if-no-handler-found: true

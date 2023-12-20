@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.feiniaojin</groupId>
             <artifactId>graceful-response</artifactId>
-            <version>3.3.1-boot2</version>
+            <version>3.4.0-boot2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -38,19 +38,6 @@
             <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-logging -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-logging</artifactId>
-            <version>2.7.16</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>slf4j-api</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

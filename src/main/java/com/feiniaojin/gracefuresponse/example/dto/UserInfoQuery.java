@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
  * @author qinyujie
  */
 @Data
+//@ValidationStatusCode(code = "789")
 public class UserInfoQuery {
 
     @NotNull(message = "userId is null !")
