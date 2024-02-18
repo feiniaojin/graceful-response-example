@@ -25,4 +25,6 @@ public class UserInfoQuery {
     @NotNull(message = "age is null !")
     @Range(min = 18, max = 50)
     private Integer age;
+    @NotNull
+    private Integer gender;
 }
