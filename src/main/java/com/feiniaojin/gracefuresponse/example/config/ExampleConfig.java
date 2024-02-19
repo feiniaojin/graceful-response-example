@@ -44,17 +44,17 @@ public class ExampleConfig implements WebMvcConfigurer {
     return validator;
   }
 
-  @Override
-  public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-    FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
-    //自定义配置...
-    FastJsonConfig config = new FastJsonConfig();
-    config.setDateFormat("yyyy-MM-dd HH:mm:ss");
-    config.setReaderFeatures(JSONReader.Feature.FieldBased, JSONReader.Feature.SupportArrayToBean);
-    config.setWriterFeatures(JSONWriter.Feature.WriteMapNullValue, JSONWriter.Feature.PrettyFormat);
-    converter.setFastJsonConfig(config);
-    converter.setDefaultCharset(StandardCharsets.UTF_8);
-    converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
-    converters.add(0, converter);
-  }
+//  @Override
+//  public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+//    FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
+//    //自定义配置...
+//    FastJsonConfig config = new FastJsonConfig();
+//    config.setDateFormat("yyyy-MM-dd HH:mm:ss");
+//    config.setReaderFeatures(JSONReader.Feature.FieldBased, JSONReader.Feature.SupportArrayToBean);
+//    config.setWriterFeatures(JSONWriter.Feature.WriteMapNullValue, JSONWriter.Feature.PrettyFormat);
+//    converter.setFastJsonConfig(config);
+//    converter.setDefaultCharset(StandardCharsets.UTF_8);
+//    converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
+//    converters.add(0, converter);
+//  }
 }
