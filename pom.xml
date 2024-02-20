@@ -6,7 +6,7 @@
 
     <groupId>com.feiniaojin.ddd.ecosystem</groupId>
     <artifactId>graceful-response-example</artifactId>
-    <version>3.5.0-boot2</version>
+    <version>3.5.1-boot2</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.feiniaojin</groupId>
             <artifactId>graceful-response</artifactId>
-            <version>3.5.0-boot2</version>
+            <version>3.5.1-boot2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -44,11 +44,10 @@
             <artifactId>jackson-core</artifactId>
             <version>2.13.4</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.13.4.1</version>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2-extension-spring5</artifactId>
+            <version>2.0.46</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
         <dependency>
