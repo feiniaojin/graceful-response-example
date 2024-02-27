@@ -8,6 +8,6 @@ import lombok.Data;
 @Data
 public class InnerDto {
     @NotNull(message = "innerProperty is null !")
-//    @ValidationStatusCode(code = "522")
+    @ValidationStatusCode(code = "522")
     private String innerProperty;
 }
