@@ -4,10 +4,7 @@ import com.feiniaojin.gracefulresponse.GracefulResponse;
 import com.feiniaojin.gracefulresponse.api.ResponseFactory;
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
 import com.feiniaojin.gracefulresponse.data.Response;
-import com.feiniaojin.gracefuresponse.example.dto.MethodDTO;
-import com.feiniaojin.gracefuresponse.example.dto.UserInfoCommand;
-import com.feiniaojin.gracefuresponse.example.dto.UserInfoQuery;
-import com.feiniaojin.gracefuresponse.example.dto.UserInfoView;
+import com.feiniaojin.gracefuresponse.example.dto.*;
 import com.feiniaojin.gracefuresponse.example.service.ExampleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -19,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Collections;
 import java.util.Map;
@@ -150,6 +148,18 @@ public class ExampleController {
                                     @NotNull(message = "userName不能为空") Long userName) {
         log.info("" + userId);
 
+    }
+
+    /**
+     * http://localhost:9090/example/validatePropertyList
+     *
+     * @param dto
+     */
+    @RequestMapping("/validatePropertyList")
+    @ResponseBody
+//    @ValidationStatusCode(code = "523")
+    public void validatePropertyList(@Valid @RequestBody PropertyListMethodDTO dto) {
+        log.info("");
     }
 
     /**

@@ -5,9 +5,10 @@ import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 
+
 @Data
 public class InnerDto {
     @NotNull(message = "innerProperty is null !")
-//    @ValidationStatusCode(code = "522")
+    @ValidationStatusCode(code = "522")
     private String innerProperty;
 }
