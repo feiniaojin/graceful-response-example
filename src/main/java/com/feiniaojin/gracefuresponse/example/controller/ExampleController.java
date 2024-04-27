@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -277,6 +278,8 @@ public class ExampleController {
     @ResponseBody
     public void assert2(Integer id) {
         GracefulResponse.wrapAssert("1001", () -> Assert.isTrue(id == 1, "id不等于1"));
+        Map<String,Object> data=new HashMap<>();
+        GracefulResponse.wrapAssert("1001",data,() -> Assert.isTrue(id == 1, "id不等于1"));
     }
     @RequestMapping("/customExceptionDetailMessage0")
     public void customExceptionDetailMessage0() {
