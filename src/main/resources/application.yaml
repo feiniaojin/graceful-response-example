@@ -12,6 +12,9 @@ graceful-response:
   # response-class-full-name: com.feiniaojin.gracefuresponse.example.config.CustomResponseImpl
   origin-exception-using-detail-message: true
   default-validate-error-code: 999
+  exclude-urls: /**/ex/**
+  i18n: false
+  exclude-return-types: com.feiniaojin.gracefuresponse.example.dto.UserInfoView
 #  json-http-message-converter: com.alibaba.fastjson2.support.spring6.http.converter.FastJsonHttpMessageConverter
 spring:
   mvc:
