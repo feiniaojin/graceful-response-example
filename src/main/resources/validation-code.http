@@ -1,0 +1,9 @@
+###
+POST http://127.0.0.1:9090/example/classValidateCode
+Content-Type: application/json
+
+{
+  "id": null
+}
+
+###
