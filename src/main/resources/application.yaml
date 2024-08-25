@@ -1,6 +1,10 @@
 server:
   port: 9090
-
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /api-docs
 graceful-response:
   print-exception-in-global-advice: true
   default-error-msg: fail
@@ -8,13 +12,17 @@ graceful-response:
   default-success-code: 200
   default-success-msg: success
   response-style: 1
-  exclude-packages: com.feiniaojin.*.controller.exclude
+  exclude-packages:
+  - com.feiniaojin.*.controller.exclude
+  - springfox.**
   # response-class-full-name: com.feiniaojin.gracefuresponse.example.config.CustomResponseImpl
   origin-exception-using-detail-message: true
   default-validate-error-code: 999
-  exclude-urls: /**/ex/**
+  exclude-urls:
+  - /**/ex/**
+  - /**/api-docs/**
   i18n: false
-  exclude-return-types: com.feiniaojin.gracefuresponse.example.dto.UserInfoView
+  exclude-return-types:
 #  json-http-message-converter: com.alibaba.fastjson2.support.spring6.http.converter.FastJsonHttpMessageConverter
 spring:
   mvc:

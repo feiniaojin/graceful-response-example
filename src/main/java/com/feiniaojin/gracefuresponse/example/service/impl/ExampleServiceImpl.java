@@ -13,7 +13,7 @@ public class ExampleServiceImpl implements ExampleService {
 
     @Override
     public void testCheckedException() throws Exception {
-        throw new Exception();
+        throw new ExampleExceptions.CheckedException();
     }
 
 }
