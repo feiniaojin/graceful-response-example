@@ -1,5 +1,6 @@
 package com.feiniaojin.gracefuresponse.example.controller;
 
+import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
 import com.feiniaojin.gracefuresponse.example.dto.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -22,6 +23,17 @@ public class ValidationController {
     @PostMapping("/validateDto")
 //    @ValidationStatusCode(code = "123")
     public void validateDto(@Validated UserInfoQuery dto) {
+        log.info(dto.toString());
+    }
+
+    /**
+     * http://localhost:9090/example/validateDto
+     *
+     * @param dto
+     */
+    @PostMapping("/validateDto1")
+    @ValidationStatusCode(code = "123")
+    public void validateDto1(@Validated UserInfoQuery dto) {
         log.info(dto.toString());
     }
 
@@ -66,8 +78,7 @@ public class ValidationController {
      *
      * @param command
      */
-    @RequestMapping("/validate/propertyType")
-    @ResponseBody
+    @PostMapping("/validate/propertyType")
     public void validatePropertyType(@RequestBody @Validated UserInfoCommand command) {
         log.info("");
     }
@@ -75,7 +86,7 @@ public class ValidationController {
     /**
      * @param classValidateCode
      */
-    @RequestMapping("/classValidateCode")
+    @PostMapping("/classValidateCode")
     public void classValidateCode(@Validated @RequestBody ClassValidateCode classValidateCode) {
 
     }

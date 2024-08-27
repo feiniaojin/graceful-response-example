@@ -49,12 +49,12 @@ public class ExceptionMapperController {
         return UserInfoView.builder().id(0L).name("0000").build();
     }
 
-    @RequestMapping("/customExceptionDetailMessage0")
+    @GetMapping("/customExceptionDetailMessage0")
     public void customExceptionDetailMessage0() {
         throw new ReplaceMsgException();
     }
 
-    @RequestMapping("/customExceptionDetailMessage1")
+    @GetMapping("/customExceptionDetailMessage1")
     public void customExceptionDetailMessage1() {
         throw new ReplaceMsgException("我自己定义了异常信息");
     }

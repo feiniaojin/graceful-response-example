@@ -13,16 +13,26 @@ graceful-response:
   default-success-msg: success
   response-style: 1
   exclude-packages:
-  - com.feiniaojin.*.controller.exclude
-  - springfox.**
+    - com.feiniaojin.*.controller.exclude
+    - springfox.**
   # response-class-full-name: com.feiniaojin.gracefuresponse.example.config.CustomResponseImpl
-  origin-exception-using-detail-message: true
+  origin-exception-using-detail-message: false
   default-validate-error-code: 999
   exclude-urls:
-  - /**/ex/**
-  - /**/api-docs/**
-  i18n: false
+    - /**/ex/**
+    - /**/api-docs/**
+  i18n: true
   exclude-return-types:
+    - com.feiniaojin.gracefuresponse.example.dto.Result
+  exclude-exception-types:
+    - com.feiniaojin.gracefuresponse.example.exceptions.ExcludeException
+  exclude-exception-packages:
+    - "*.excludep.*"
+  exception-alias-config-map:
+    "[com.feiniaojin.gracefuresponse.example.exceptions.outer.OuterException]":
+        code: 5200
+        httpStatusCode: 401
+
 #  json-http-message-converter: com.alibaba.fastjson2.support.spring6.http.converter.FastJsonHttpMessageConverter
 spring:
   mvc:

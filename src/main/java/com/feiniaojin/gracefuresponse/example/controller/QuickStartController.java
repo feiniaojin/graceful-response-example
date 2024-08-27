@@ -58,7 +58,7 @@ public class QuickStartController {
     @Operation(summary = "查询用户信息",
             description = "根据ID查询用户信息")
     public UserInfoView get(UserInfoQuery dto) {
-        return UserInfoView.builder().id(dto.getUserId()).name("name" + dto.getUserId()).build();
+        return UserInfoView.builder().id(1L).name("name" + dto.getUserId()).build();
     }
 
     /**

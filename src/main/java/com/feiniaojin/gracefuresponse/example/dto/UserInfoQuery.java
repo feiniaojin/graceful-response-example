@@ -28,8 +28,9 @@ public class UserInfoQuery {
     private String userName;
 
     @NotNull(message = "age is null !")
-    @Range(min = 18, max = 50)
+    @Range(min = 18, max = 50,message = "年龄必须在18～50之间")
     private Integer age;
+
     @NotNull
     private Integer gender;
 }

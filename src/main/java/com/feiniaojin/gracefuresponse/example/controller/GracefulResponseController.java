@@ -1,12 +1,15 @@
 package com.feiniaojin.gracefuresponse.example.controller;
 
 import com.feiniaojin.gracefulresponse.GracefulResponse;
+import com.feiniaojin.gracefulresponse.GracefulResponseDataException;
+import com.feiniaojin.gracefuresponse.example.exceptions.ExceptionEnum;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,5 +55,16 @@ public class GracefulResponseController {
         GracefulResponse.wrapAssert("1001", () -> Assert.isTrue(id == 1, "id不等于1"));
         Map<String, Object> data = new HashMap<>();
         GracefulResponse.wrapAssert("1001", data, () -> Assert.isTrue(id == 1, "id不等于1"));
+    }
+
+    @GetMapping("/dataException0")
+    public void dataException0() {
+        GracefulResponse.raiseException(ExceptionEnum.CUSTOM_EXCEPTION,
+                new GracefulResponseDataException(Collections.singletonMap("key", "value")));
+    }
+
+    @GetMapping("/dataException")
+    public void dataException() {
+        throw new GracefulResponseDataException(Collections.singletonMap("key", "value"));
     }
 }

@@ -1,5 +1,6 @@
 package com.feiniaojin.gracefuresponse.example.controller.exclude;
 
+import com.feiniaojin.gracefuresponse.example.dto.UserInfoView;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,5 +22,10 @@ public class ExcludeController {
         Map<String, Object> result = new HashMap<>();
         result.put("key", "value");
         return result;
+    }
+
+    @GetMapping("/test1")
+    public UserInfoView test1(){
+        return UserInfoView.builder().build();
     }
 }
