@@ -15,6 +15,7 @@ import lombok.Data;
 @Builder
 @Tag(name = "用户信息", description = "用户信息视图对象")
 public class UserInfoView {
+
     @Schema(name = "id", description = "用户id", type = "long")
     private Long id;
 

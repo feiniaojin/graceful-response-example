@@ -1,10 +1,12 @@
 package com.feiniaojin.gracefuresponse.example.config;
 
+import com.fasterxml.classmate.TypeResolver;
 import io.swagger.v3.oas.models.Operation;
 import io.swagger.v3.oas.models.media.*;
 import io.swagger.v3.oas.models.responses.ApiResponse;
 import io.swagger.v3.oas.models.responses.ApiResponses;
 import org.springdoc.core.customizers.OperationCustomizer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.HandlerMethod;
 
@@ -47,9 +49,9 @@ public class ApiDocsOperationCustomizer implements OperationCustomizer {
         final Content content = value.getContent();
         if (Objects.isNull(content)) {
             final Schema<?> wrapperSchema = new Schema<>();
-            wrapperSchema.addProperty("code", new StringSchema()._default("200"));
-            wrapperSchema.addProperty("msg", new StringSchema()._default("ok"));
-            wrapperSchema.addProperty("data", new MapSchema()._default(Collections.emptyMap()));
+            wrapperSchema.addProperty("code", new StringSchema()._default("200").description("错误码"));
+            wrapperSchema.addProperty("msg", new StringSchema()._default("ok").description("提示信息"));
+            wrapperSchema.addProperty("data", new MapSchema()._default(Collections.emptyMap()).description("响应数据体"));
             Content newContent = new Content();
             MediaType mediaType = new MediaType();
             mediaType.setSchema(wrapperSchema);
@@ -65,16 +67,16 @@ public class ApiDocsOperationCustomizer implements OperationCustomizer {
 
     private Schema<?> customizeSchema(final Schema<?> objSchema) {
         final Schema<?> wrapperSchema = new Schema<>();
-        wrapperSchema.addProperty("code", new StringSchema()._default("200"));
-        wrapperSchema.addProperty("msg", new StringSchema()._default("ok"));
+        wrapperSchema.addProperty("code", new StringSchema()._default("200").description("错误码"));
+        wrapperSchema.addProperty("msg", new StringSchema()._default("ok").description("提示信息"));
         wrapperSchema.addProperty("data", objSchema);
         return wrapperSchema;
     }
 
     private Schema<?> customizeSchemaError(final Schema<?> objSchema) {
         final Schema<?> wrapperSchema = new Schema<>();
-        wrapperSchema.addProperty("code", new StringSchema()._default("500"));
-        wrapperSchema.addProperty("msg", new StringSchema()._default("error"));
+        wrapperSchema.addProperty("code", new StringSchema()._default("500").description("错误码"));
+        wrapperSchema.addProperty("msg", new StringSchema()._default("error").description("提示信息"));
         return wrapperSchema;
     }
 }

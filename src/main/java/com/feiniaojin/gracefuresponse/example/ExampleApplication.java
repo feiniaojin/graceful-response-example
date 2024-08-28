@@ -3,6 +3,7 @@ package com.feiniaojin.gracefuresponse.example;
 import com.feiniaojin.gracefulresponse.EnableGracefulResponse;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 
 @EnableGracefulResponse
 @SpringBootApplication
