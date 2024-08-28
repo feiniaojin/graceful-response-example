@@ -1,5 +1,6 @@
 package com.feiniaojin.gracefuresponse.example.controller;
 
+import com.feiniaojin.gracefuresponse.example.exceptions.outer.BbOuterException;
 import com.feiniaojin.gracefuresponse.example.exceptions.outer.OuterException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,5 +21,13 @@ public class AlisaController {
     @GetMapping("/test0")
     public void test0() {
         throw new OuterException();
+    }
+
+    /**
+     * 模拟抛出一个外部异常的场景
+     */
+    @GetMapping("/test1")
+    public void test1() {
+        throw new BbOuterException();
     }
 }
