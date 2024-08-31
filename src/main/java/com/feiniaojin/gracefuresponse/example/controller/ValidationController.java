@@ -7,7 +7,10 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/v")
@@ -89,5 +92,14 @@ public class ValidationController {
     @PostMapping("/classValidateCode")
     public void classValidateCode(@Validated @RequestBody ClassValidateCode classValidateCode) {
 
+    }
+
+    /**
+     * http://localhost:9090/v/customValidation
+     *
+     * @param query
+     */
+    @PostMapping("/customValidation")
+    public void customValidation(@Validated CustomValidationUserQuery query) {
     }
 }
