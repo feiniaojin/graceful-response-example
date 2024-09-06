@@ -6,7 +6,11 @@ import jakarta.validation.ValidatorFactory;
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.List;
 
 /**
  * Config类.
@@ -47,4 +51,20 @@ public class ExampleConfig implements WebMvcConfigurer {
 //    converter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
 //    converters.add(0, converter);
 //  }
+
+
+  @Override
+  public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
+    WebMvcConfigurer.super.configureHandlerExceptionResolvers(resolvers);
+  }
+
+  @Override
+  public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+    WebMvcConfigurer.super.configureMessageConverters(converters);
+  }
+
+  @Override
+  public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+    WebMvcConfigurer.super.extendMessageConverters(converters);
+  }
 }

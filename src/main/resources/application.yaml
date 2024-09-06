@@ -19,6 +19,7 @@ graceful-response:
   exclude-urls:
     - /**/ex/**
     - /**/api-docs/**
+    - /**/error/**
   i18n: true
   exclude-return-types:
     - com.feiniaojin.gracefuresponse.example.dto.Result
