@@ -1,9 +1,5 @@
 package com.feiniaojin.gracefuresponse.example.exceptions.outer;
 
-import com.feiniaojin.gracefulresponse.api.ExceptionAliasFor;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
 /**
  * 模拟外部异常
  *

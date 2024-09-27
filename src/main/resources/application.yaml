@@ -1,5 +1,5 @@
 server:
-  port: 9090
+  port: 9168
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
@@ -17,19 +17,20 @@ graceful-response:
   origin-exception-using-detail-message: false
   default-validate-error-code: 999
   exclude-urls:
-    - /**/ex/**
+#    - /**/ex/**
     - /**/api-docs/**
-    - /**/error/**
+#    - /**/error/**
   i18n: true
   exclude-return-types:
     - com.feiniaojin.gracefuresponse.example.dto.Result
   exclude-exception-types:
     - com.feiniaojin.gracefuresponse.example.exceptions.ExcludeException
   exclude-exception-packages:
-    - "*.excludep.*"
+    - "*excludep*"
   exception-alias-config-map:
     "[com.feiniaojin.gracefuresponse.example.exceptions.outer.OuterException]":
         code: 5200
+        msg: "通过配置文件配置OuterException的提示"
         httpStatusCode: 401
 
 #  json-http-message-converter: com.alibaba.fastjson2.support.spring6.http.converter.FastJsonHttpMessageConverter
@@ -37,10 +38,12 @@ spring:
   mvc:
     throw-exception-if-no-handler-found: true
     static-path-pattern: "*.html"
-    add-mappings: false
     view:
       suffix: .html
       prefix: /
+  web:
+    resources:
+      add-mappings: false
 
 logging:
   level:

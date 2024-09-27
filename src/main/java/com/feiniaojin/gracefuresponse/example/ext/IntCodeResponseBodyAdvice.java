@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  *
  * @author qinyujie
  */
-@ControllerAdvice
+//@ControllerAdvice
 @Order(2008)
 public class IntCodeResponseBodyAdvice implements ResponseBodyAdvice<Object> {
 

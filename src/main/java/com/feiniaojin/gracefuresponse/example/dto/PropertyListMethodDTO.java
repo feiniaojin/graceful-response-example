@@ -34,6 +34,6 @@ public class PropertyListMethodDTO {
 
         ObjectMapper mapper = new ObjectMapper();
         PropertyListMethodDTO methodDTO = mapper.readValue(input, PropertyListMethodDTO.class);
-        System.out.println("");
+        System.out.println(methodDTO);
     }
 }

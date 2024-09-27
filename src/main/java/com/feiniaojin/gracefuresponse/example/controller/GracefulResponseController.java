@@ -65,6 +65,6 @@ public class GracefulResponseController {
 
     @GetMapping("/dataException")
     public void dataException() {
-        throw new GracefulResponseDataException(Collections.singletonMap("key", "value"));
+        throw new GracefulResponseDataException("测试dataException",Collections.singletonMap("key", "value"));
     }
 }

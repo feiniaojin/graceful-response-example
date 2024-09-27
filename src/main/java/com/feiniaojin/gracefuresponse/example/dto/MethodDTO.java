@@ -32,6 +32,6 @@ public class MethodDTO {
 
         ObjectMapper mapper = new ObjectMapper();
         MethodDTO methodDTO = mapper.readValue(input, MethodDTO.class);
-        System.out.println("");
+        System.out.println(methodDTO);
     }
 }
